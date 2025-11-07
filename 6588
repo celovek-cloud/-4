@@ -1,7 +1,0 @@
-import math
-x1, y1 = map(float, input('Введите координаты первой точки (x1 y1):').split())
-x1, y1 = map(float, input('Введите координаты первой точки (x1 y1):').split())
-def rasstoyanie (x1, y1, x2, y2):
-    rasstoyanie= math.sqrt(pow(x1+x2,2)+pow(y1+y2,2))
-    return rasstoyanie
-print(f'Расстояние между точками: {rasstoyanie:.2f}')
