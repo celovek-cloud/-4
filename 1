@@ -1,0 +1,5 @@
+PROCENT_NALOGA = 0.13
+godovoi_dohod = float(input('Введите Ваш годовой доход:'))
+nalog = godovoi_dohod * PROCENT_NALOGA
+posle_naloga = godovoi_dohod - nalog
+print(f'Ваш годовой доход: {godovoi_dohod:,.2f}, Сумма налога: {nalog:,.2f}, Доход после вычета налога: {posle_naloga:,.2f}')
