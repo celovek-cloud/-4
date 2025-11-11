@@ -1,0 +1,9 @@
+PRIСE = 49.5
+rasstoyanie = float(input('Какое расстояние надо проехать:'))
+potreblenie_benzina = float(input('Сколько литров бензина требуется для того, чтобы проехать 100 км: '))
+def total_litr (rasstoyanie, potreblenie_benzina):
+    return rasstoyanie * (potreblenie_benzina/100)
+def total_prise(total_litr, PRIСE):
+    return total_litr * PRIСE
+print(f'Для поездки потребуется {total_litr(rasstoyanie, potreblenie_benzina):.2f} литров бензина.')
+print(f'Общая стоимость поездки будет равна {total_prise(rasstoyanie, potreblenie_benzina ):.2f} рублей.')
