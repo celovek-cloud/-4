@@ -1,0 +1,19 @@
+PYATERIK = 5000
+DVOIKA = 2000
+TISICHA = 1000
+PYATSOTKA = 500
+DVESTI = 200
+SOTKA = 100
+dengi = int(input('Введите сумму, кратную 100:'))
+pyat_tisyach = dengi // PYATERIK
+print(f'Выдано {pyat_tisyach} купюр по 5000')
+dve_tisyachi = (dengi % PYATERIK) // DVOIKA
+print(f'Выдано {dve_tisyachi} купюр по 2000')
+one_tisyacha = (dengi % PYATERIK % DVOIKA) // TISICHA
+print(f'Выдано {one_tisyacha} купюр по 1000')
+pyat_soten = (dengi % PYATERIK % DVOIKA % TISICHA) // PYATSOTKA
+print(f'Выдано {pyat_soten} купюр по 500')
+dve_sotki = (dengi % PYATERIK % DVOIKA % TISICHA % PYATSOTKA) // DVESTI
+print(f'Выдано {dve_sotki} купюр по 200')
+one_sotki = (dengi % PYATERIK % DVOIKA % TISICHA % PYATSOTKA % DVESTI) // SOTKA
+print(f'Выдано {one_sotki} купюр по 100')
