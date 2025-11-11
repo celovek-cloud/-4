@@ -1,5 +1,14 @@
 USD_TO_RUB = 95.50
 usd = float(input('Введите сумму в долларах:'))
 def convert_usd_to_rub (usd):
+    """
+    Конвертирует доллары в рубли
+
+    Args:
+        usd (float): сумма в долларах
+
+    Returns:
+        float: сумма в рублях
+    """
     return usd * USD_TO_RUB
 print(f'{usd} долларов это {convert_usd_to_rub(usd)}рублей')
