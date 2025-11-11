@@ -3,11 +3,30 @@ x1, y1 = map(float, input('Введите координаты точки A: ').
 x2, y2 = map(float, input('Введите координаты точки B: ').split())
 x3, y3 = map(float, input('Введите координаты точки C: ').split())
 def calculate_distance(x1, y1, x2, y2):
+    """
+    Вычисляет расстояние между двумия точками
+
+    Args:
+        x1, y1 (float): координаты первой точки
+        x2, y2 (float): координаты второй точки
+        x3, y3 (float): координаты третей точки
+
+    Returns:
+        float: расстояние между точками
+    """
     return math.sqrt((x1 - x2) ** 2 + (y1 - y2) ** 2)
 a = calculate_distance(x1, y1, x2, y2)
 b = calculate_distance(x2, y2, x3, y3)
 c = calculate_distance(x1, y1, x3, y3)
 def calculate_triangle_area(a, b, c):
+    """
+    Вычисляет площадь треугольника
+
+    Args:
+        a, b, c (float): длины сторон треугольника
+    Returns:
+        float: площадь треугольника
+    """
     p = (a + b + c)/2
     return math.sqrt(p * (p - a) * (p - b) * (p - c))
 print(f'Площадь такого треугольника равна: {calculate_triangle_area(a, b, c):.2f} ')
