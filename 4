@@ -1,9 +1,28 @@
 import math
 def calculate_rectangle_area(width, height):
+    """
+    Вычисляет площадь прямоугольника
+
+    Args:
+        width (float): ширина прямоугольника
+        height (float): высота прямоугольника
+
+    Returns:
+        float: площадь прямоугольника
+    """
     return width * height
 def calculate_circle_area(radius):
+    """
+    Вычисляет площадь круга
+
+    Args:
+        radius (float): радиус круга
+
+    Returns:
+        float: площадь круга
+    """
     return math.pi * radius**2
-weight, height = map(float, input("Введите высоту и ширину прямоугольника через пробел: ").split())
+weight, height = map(float, input("Введите высоту и ширину прямоугольника: ").split())
 print(f'Площадь прямоугольника со сторонами {weight} и {height} равна {calculate_rectangle_area(weight, height)}')
 radius = float(input("Введите радиус: "))
-print(f'Площадь круга с радиусом {radius} равна {calculate_circle_area(radius)})
+print(f'Площадь круга с радиусом {radius} равна {calculate_circle_area(radius)}')
