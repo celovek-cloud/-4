@@ -1,0 +1,24 @@
+karmashek = int(input('Введите номер кармашка: '))
+if 0 < karmashek < 36:
+    if karmashek == 0:
+        print('Этот кармашек зеленого цвета')
+    elif 1 <= karmashek <= 10:
+        if karmashek % 2 == 0:
+            print('Этот кармашек черного цвета')
+        else:
+            print('Этот кармашек красного цвета')
+    elif 11 <= karmashek <= 18:
+        if karmashek % 2 == 0:
+            print('Этот кармашек красного цвета')
+        else:
+            print('Этот кармашек черного цвета')
+    elif 19 <= karmashek <= 28:
+        if karmashek % 2 == 0:
+            print('Этот кармашек черного цвета')
+        else:
+            print('Этот кармашек красного цвета')
+    elif 29 <= karmashek <= 36:
+        if karmashek % 2 == 0:
+            print('Этот кармашек красного цвета')
+        else:
+            print('Этот кармашек черного цвета')
