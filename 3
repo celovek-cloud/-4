@@ -1,0 +1,10 @@
+x, y = map(int, input('Введите расположение первой клетки: ').split())
+a, b = map(int, input('Введите расположение второй клетки: ').split())
+
+if (0<=a<=8) and (0<=b<=8) and (0<=x<=8) and (0<=y<=8):
+    if ((a+b)%2==0) and ((x+y)%2==0) or ((a+b)%2!=0) and ((x+y)%2!=0):
+        print('Yes')
+    else:
+        print('No')
+else:
+    print('Нет такой клетки')
