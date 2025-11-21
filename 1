@@ -1,9 +1,10 @@
 temperatura = float(input('Введите вашу температуру: '))
 davlenie = int(input('Введите ваше давление: '))
 puls = int(input('Введите ваш пульс: '))
-if 36 <= temperatura <= 37 and 110 <= davlenie <= 130 and 60 <= puls <= 100:
+
+if (36 <= temperatura <= 37) and (110 <= davlenie <= 130) and (60 <= puls <= 100):
     print('С вашим состаянием все ок, кайфуйте')
-elif temperatura < 35 or temperatura > 38 or davlenie < 105 or davlenie > 140 or puls < 55 or puls > 110:
+elif (temperatura < 35 or temperatura > 38) or (davlenie < 105 or davlenie > 140) or (puls < 55 or puls > 110):
     print('Да ты подохнешь щас, вызывай врача')
 else:
     print('В целом норм, у вас легкое недомогание, можно без врача')
