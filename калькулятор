@@ -1,0 +1,10 @@
+#простой калькулятор
+
+first_chislo = float(input('Введите первое число: '))
+operacia = input('Введите операцию: ')
+second_chislo = float(input('Введите второе число: '))
+
+match operacia:
+    case +:
+        print(first_chislo+second_chislo)
+    case -:
