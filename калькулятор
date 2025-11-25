@@ -10,4 +10,9 @@ match operacia:
     case -:
         print(first_chislo-second_chislo)
     case *:
-        print
+        print(first_chislo*second_chislo)
+    case/:
+        if second_chislo == 0
+            print('Ошибка')
+        else:
+            print(first_chislo/second_chislo)
