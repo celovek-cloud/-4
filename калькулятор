@@ -8,3 +8,6 @@ match operacia:
     case +:
         print(first_chislo+second_chislo)
     case -:
+        print(first_chislo-second_chislo)
+    case *:
+        print
