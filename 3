@@ -1,127 +1,15 @@
-#Интерактивное меню кафе
+#Сколько километров
 
-PRICE_COFFEE = 120
-PRICE_TEA = 80
-PRICE_JUISE = 100
-PRICE_WATER = 50
-PRICE_LEMONADE = 90
-SKIDKA_STUDENT = 0.2
-SKIDKA_PENCIONERI = 0.1
+D_G = 15
+A_G = 10
+G_B = 11
+A_B = 8
+V_G = 17
 
-print("""
-╔════════════════════════════╗
-║     Меню напитков          ║
-╠═══╦═══════════════╬════════╣
-║ № ║   Напиток     ║  Цена  ║
-╠═══╬═══════════════╬════════╣
-║ 1 ║     Кофе      ║ 120 р  ║
-╠═══╬═══════════════╬════════╣
-║ 2 ║     Чай       ║  80 р  ║
-╠═══╬═══════════════╬════════╣
-║ 3 ║     Сок       ║ 100 р  ║
-╠═══╬═══════════════╬════════╣
-║ 4 ║     Вода      ║  50 р  ║
-╠═══╬═══════════════╬════════╣
-║ 5 ║   Лимонад     ║  90 р  ║
-╚═══╩═══════════════╩════════╝ """)
+#Находим растояние от основной дороги до Г
+doroga_G = ((A_G+G_B)-A_B)/2
 
-drink = input('Введите название или номер напитка: ')
-kolvo = int(input('Введите количество напитков: '))
-skidka = input('Введите код скидки: ')
-
-def drink (drink):
-    match drink:
-        case '1' | 'Кофе':
-            drink = 'Кофе ☕ '
-        case '2' | 'Чай':
-            drink = 'Чай 🍵'
-        case '3' | 'Сок':
-            drink = 'Сок 🧃'
-        case '4' | 'Вода':
-            drink = 'Вода 💧'
-        case '5' | 'Лимонад':
-            drink = 'Лимонад 🥤'
-        case _:
-            print('ОШИБКА! В меню отсутсвует такой напиток')
-    return drink
-
-def price (drink):
-    match drink:
-        case '1' | 'Кофе':
-            price = int(PRICE_COFFEE)
-        case '2' | 'Чай':
-            price = int(PRICE_TEA)
-        case '3' | 'Сок':
-            price = int(PRICE_JUISE)
-        case '4' | 'Вода':
-            price = int(PRICE_WATER)
-        case '5' | 'Лимонад':
-            price = int(PRICE_LEMONADE)
-        case _:
-            print('ОШИБКА! В меню отсутсвует такой напиток')
-    return drink
-
-def itog (kolvo):
-    match drink:
-        case '1' | 'Кофе':
-            itog == kolvo*PRICE_COFFEE
-        case '2' | 'Чай':
-            itog == kolvo*PRICE_TEA
-        case '3' | 'Сок':
-            itog == kolvo*PRICE_JUISE
-        case '4' | 'Вода':
-            itog == kolvo*PRICE_WATER
-        case '5' | 'Лимонад':
-            itog == kolvo*PRICE_LEMONADE
-        case _:
-            print('ОШИБКА! В меню отсутсвует такой напиток')
-    return itog
-
-def emoji_drink(drink):
-    match drink:
-        case '1' | 'Кофе':
-            emoji = '☕ '
-        case '2' | 'Чай':
-            emoji = '🍵'
-        case '3' | 'Сок':
-            emoji = '🧃'
-        case '4' | 'Вода':
-            emoji = '💧'
-        case '5' | 'Лимонад':
-            emoji = '🥤'
-        case _:
-            print('ОШИБКА! В меню отсутсвует такой напиток')
-    return emoji_drink
-
-def okonchanie(kolvo):
-    if kolvo == 1:
-        okonchanie == 'порция'
-    elif 2 <= kolvo <= 4:
-        okonchanie == 'порции'
-    elif kolvo >= 5:
-        okonchanie == 'порций'
-    else:
-        print('ОШИБКА! Неправильно введено количество порций')
-    return okonchanie
-
-def skidka(skidka):
-    match skidka:
-        case 'STUDENT':
-            skidka = -itog(kolvo)*SKIDKA_STUDENT
-        case 'PENCIONERI':
-            skidka = -itog(kolvo)*SKIDKA_PENCIONERI
-        case _:
-            print()
-    return skidka
-
-print('╔════════════════════════╗')
-print(f'║  {emoji_drink(drink)} КВИТАНЦИЯ КАФЕ {emoji_drink(drink)}  ║')
-print('╚════════════════════════╝ ')
-print(f'Товар: {drink(drink)}')
-print(f'Цена за порцию: {price(kolvo)} руб')
-print(f'Количество: {kolvo} {okonchanie(kolvo)}')
-print(f'Сумма: {itog(kolvo)} руб')
-print(f'Скидка "{skidka}": {skidka(skidka)} руб ')
-print('════════════════════════')
-print(f'💰 К ОПЛАТЕ: {(itog(kolvo))+(skidka(skidka))} руб')
-print('════════════════════════')
+#Расстояние от Д до В равно расстоянию
+#от Д до Г минус растояние от дороги до Г
+#и расстоянию от Г до В без расстояния от Г до дороги
+print(f'Расстояние между домом Джонатана и Вирусологическим центром равно {(D_G-doroga_G)+(V_G-doroga_G)}')
