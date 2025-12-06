@@ -1,0 +1,14 @@
+#Угадай число
+print('Попробуйте угадать загаданое число за 3 попытки')
+random_chislo = 3
+for i in range(3):
+    z = int(input('Введите число от 1 до 10: '))
+    if z == random_chislo:
+        print('Угадали!')
+        break
+    elif z > random_chislo:
+        print('Неверно! Загаданое число меньше')
+    elif z < random_chislo:
+        print('Неверно! Загаданое число больше')
+if z != random_chislo:
+    print('Попытки закончились! Попробуйте снова')
