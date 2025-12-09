@@ -1,0 +1,16 @@
+import random
+total = 0
+flag = True
+right_num = random.randint(1, 100)
+while flag:
+    num = int(input("Введите число: "))
+    total += 1
+    if num == right_num:
+        print("Correct")
+        flag = False
+    elif num < right_num:
+        print("Неверно, нужно больше")
+    else:
+        print('Неверно, нужно меньше')
+print('ПОЗДРАВЛЯЮ!!!!! ВЫ УГАДАЛИ ЧИСЛО')
+print(f'Вам понадобилось {total} попыток')
