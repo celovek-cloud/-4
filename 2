@@ -1,0 +1,14 @@
+#Очередь
+
+kolvo_people = 0
+people = ''
+while people != 'Левон':
+    people = input('Введите имя человека в очереди: ')
+    if people != 'Александра' and people != 'Левон':
+        kolvo_people += 1
+    elif people == 'Левон':
+        kolvo_people = kolvo_people
+    else:
+        kolvo_people = 0
+
+print(f'Количество людей в очреди между Александрой и Левоном: {kolvo_people}')
