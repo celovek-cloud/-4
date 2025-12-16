@@ -1,0 +1,17 @@
+#Оплата ведьмаку
+
+price = int(input('Введите цену за услугу: '))
+ostatok = price
+while ostatok != 0:
+    if ostatok // 25 > 0:
+        print(f'{ostatok//25} монет по 25')
+        ostatok = ostatok % 25
+    elif ostatok // 10 > 0:
+        print(f'{ostatok//10} монет по 10')
+        ostatok = ostatok % 10
+    elif ostatok // 5 > 0:
+        print(f'{ostatok//5} монет по 5')
+        ostatok = ostatok % 5
+    else:
+        print(f'{ostatok} монет по 1')
+        break
