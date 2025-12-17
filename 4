@@ -1,0 +1,22 @@
+#Кассовый аппарат
+
+flag = True
+sum = 0
+SKIDKA = 0.1
+
+while flag:
+    num = int(input('Введите цену товра: '))
+    if num > 0:
+        sum += num
+    elif num < 0:
+        print('Ошибка цены')
+        continue
+    else:
+        flag = False
+
+if sum > 1000:
+    sum = sum - (sum*SKIDKA)
+else:
+    sum = sum
+
+print(f'К оплате: {sum:.2f}')
