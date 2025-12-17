@@ -1,0 +1,28 @@
+#Банкомат
+
+balance = 1000
+
+while True:
+    print('''Меню операций
+    1. Узнать баланс
+    2. Снять 100 руб
+    3. Положить 100 руб
+    4. Выход''')
+    operacia = int(input('Введите код операции: '))
+    match operacia:
+        case 1:
+            print(f'Текущий баланс: {balance}')
+        case 2:
+            if balance < 100:
+                print('недостаточно средств')
+            else:
+                balance -= 100
+                print('Снято')
+        case 3:
+            balance += 100
+            print('Положено')
+        case 4:
+            print('До свидания')
+            break
+        case _:
+            print('Неверная команда')
