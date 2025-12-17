@@ -1,0 +1,17 @@
+#Ввод чисел по увеличению
+first_num = int(input('Введите первое число: '))
+second_and_first = True
+third_and_second = True
+while second_and_first:
+    second_num = int(input('Введите второе число: '))
+    if second_num <= first_num:
+        print('Ошибка. Второе число меньше или равно первому. Повторите попытку')
+    else:
+        second_and_first = False
+while third_and_second:
+    third_num = int(input('Введите третье число: '))
+    if third_num <= second_num:
+        print('Ошибка. Третье число меньше или равно второму. Повторите попытку')
+    else:
+        third_and_second = False
+print('Последовательность принята')
