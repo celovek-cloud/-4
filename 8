@@ -1,0 +1,10 @@
+import random
+
+numbers = [random.randint(1, 100) for _ in range(5)]
+print(f'Исходный список: {numbers}')
+
+for i in range(len(numbers)):
+    if numbers[i] == min(numbers):
+        index_min = i
+numbers[0], numbers[index_min] = numbers[index_min], numbers[0]
+print(f'Список после смены: {numbers}')
