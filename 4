@@ -1,0 +1,15 @@
+stroka = input('Введите 4 целых неотрицательных числа, разделенных точкой: ')
+parts = stroka.split('.')
+if len(parts) != 4:
+    print('Это некорректный IP-адрес')
+else:
+    correct = True
+    for part in parts:
+        num = int(part)
+        if num < 0 or num > 255:
+            correct = False
+            break
+    if correct:
+        print('Это корректный IP-адрес')
+    else:
+        print('Это некорректный IP-адрес')
