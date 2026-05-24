@@ -1,0 +1,14 @@
+import random
+spisochek = []
+sum_all = 0
+sum_max = 0
+for i in range(5):
+    spisok = [random.randint(-10,10) for j in range(5)]
+    if sum(spisok) > sum_max:
+        sum_max = sum(spisok)
+    sum_all += sum(spisok)
+    print(f'сумма элементов {i} вложенного списка:{sum(spisok)}')
+    spisochek.append(spisok)
+print(f'исходный список: {spisochek}')
+print(f'сумма всех элементов: {sum_all}')
+print(f'максимальная сумма: {sum_max}')
