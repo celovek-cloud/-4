@@ -1,0 +1,20 @@
+import random
+spisochek = []
+for i in range(5):
+    spisok = [random.randint(-10,10) for j in range(5)]
+    spisochek.append(spisok)
+print(f'исходный список: {spisochek}')
+need_search = int(input('введите число для поиска из списка: '))
+positions = []
+for i in range(len(spisochek)):
+    spisok = spisochek[i]
+    if spisok.count(need_search) > 0:
+        start_index = 0
+        while True:
+            try:
+                indx = spisok.index(need_search, start_index)
+                positions.append([i, indx])
+                start_index = indx +1
+            except ValueError:
+                break
+print(f'найденные позиции: {positions}')
