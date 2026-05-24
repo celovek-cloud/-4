@@ -1,0 +1,13 @@
+import random
+spisok = [random.randint(-10,10) for j in range(10)]
+print(f'Исходный список: {spisok}')
+n = len(spisok)
+change = True
+while change:
+    change = False
+    for i in range(1, n):
+        if spisok[i - 1] > spisok[i]:
+            spisok[i - 1], spisok[i] = spisok[i], spisok[i - 1]
+            change = True
+    n -= 1
+print(f'Отсортированный список: {spisok}')
