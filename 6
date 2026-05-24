@@ -1,0 +1,14 @@
+new_rukzak = list(map(int, input('Введите цены предметов (в том порядке, в котором вы залутали предметы): ').split()))
+
+sort_rukzak = new_rukzak.copy()
+sort_rukzak.sort()
+
+dissort_rukzak = new_rukzak.copy()
+dissort_rukzak.sort(reverse=True)
+
+reversed_rukzak = new_rukzak[::-1]
+
+print(f'Сортировка по возрастанию: {sort_rukzak}')
+print(f'Сортировка по убыванию: {dissort_rukzak}')
+print(f'Оригинальный порядок (от старых к новым): {new_rukzak}')
+print(f'Обратный порядок (от новых к старым): {reversed_rukzak}')
