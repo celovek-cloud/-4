@@ -1,0 +1,12 @@
+import random
+spisochek = []
+spisochek_krutoi = []
+for i in range(5):
+    spisok = [random.randint(-10,10) for j in range(5)]
+    spisochek.append(spisok)
+    for el in spisok:
+        if el > 0:
+            spisochek_krutoi.append(el)
+
+print(f'исходный список: {spisochek}')
+print(f'только положительные: {spisochek_krutoi}')
