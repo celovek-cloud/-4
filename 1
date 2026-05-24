@@ -3,5 +3,8 @@ spisochek = []
 for i in range(5):
     spisok = [random.randint(-10,10) for j in range(5)]
     spisochek.append(spisok)
+index_max = spisochek.index(max(spisochek))
 
-print(spisochek)
+print(f'весь список:{spisochek}')
+print(f'максимальный элемент:{max(spisochek)}')
+print(f'индекс максимального элемента:{index_max}')
