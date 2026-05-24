@@ -1,0 +1,16 @@
+import random
+spisok = [random.randint(-10,10) for j in range(10)]
+print(f'Исходный список: {spisok}')
+i = 0
+n = len(spisok)
+while i < n - 1:
+    min_index = i
+    j = i + 1
+    while j < n:
+        if spisok[j] < spisok[min_index]:
+            min_index = j
+        j += 1
+    if min_index != i:
+        spisok[i], spisok[min_index] = spisok[min_index], spisok[i]
+    i += 1
+print(f'Отсортированный список: {spisok}')
