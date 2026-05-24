@@ -1,0 +1,9 @@
+n = int(input('Введите количество предметов, которое может унести игрок: '))
+cennost = list(map(int, input('Введите ценности предметов (включая отрицательные) через пробел: ').split()))
+cennost.sort(reverse=True)
+rukzak = cennost[:n]
+max_sum = 0
+for value in rukzak:
+    if value > 0:
+        max_sum += value
+print(f'Максимально возможная суммарная ценность: {max_sum}')
