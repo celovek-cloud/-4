@@ -1,0 +1,12 @@
+import random
+symbols = ['0', '1', 'л', 'м', 'ф', 'з', 'н']
+repeat_no = ['н', 'ф']
+repeat_yes = [s for s in symbols if s not in repeat_no]
+labirint_stroka = []
+labirint_stroka.extend(repeat_no)
+labirint_stroka.extend(random.choices(repeat_yes, k=23))
+random.shuffle(labirint_stroka)
+labirint_stroka = ''.join(labirint_stroka)
+print(labirint_stroka)
+labirint_matrix = [list(labirint_stroka[i*5: (i+1)*5]) for i in range(5)]
+print(*[''.join(row) for row in labirint_matrix], sep='\n')
