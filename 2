@@ -1,0 +1,67 @@
+input_plants = input('Введите название, цвет, размер и рост растений (через пробел, растения разделите запятыми): ')
+plants = input_plants.split(', ')
+print('Растения на ферме:')
+for plant in plants:
+    print(plant)
+
+input_gibrid = input('Введите возможные гибриды на ферме (В формате: Название1+Название2=Название_Гибрида): ')
+input_plants_gibrid = input('Введите названия растений для проверки на гибридность: ')
+
+gibrids_list = input_gibrid.split(';')
+plant_a, plant_b = input_plants_gibrid.split()
+
+found = False
+gibrid_name = ''
+for gibrid in gibrids_list:
+    if '=' not in gibrid:
+        continue
+    parents, child = gibrid.split('=')
+    parent1, parent2 = parents.split('+')
+    parent1 = parent1.strip()
+    parent2 = parent2.strip()
+    child = child.strip()
+    if (plant_a == parent1 and plant_b == parent2) or \
+            (plant_a == parent2 and plant_b == parent1):
+        found = True
+        gibrid_name = child
+        break
+if found:
+    print(f'Получен гибрид: {gibrid_name}')
+else:
+    print('Эти растения нельзя скрестить')
+
+name_gibrid1 = input('Введите название первого родительского растения: ')
+color_gibrid1, size_gibrid1, growth_gibrid1 = input('Введите цвет, размер и рост первого родительского растения (через пробел): ').split()
+name_gibrid2 = input('Введите название второго родительского растения: ')
+color_gibrid2, size_gibrid2, growth_gibrid2 = input('Введите цвет, размер и рост второго родительского растения (через пробел): ').split()
+if name_gibrid1 < name_gibrid2:
+    gibrid_color = color_gibrid1
+else:
+    gibrid_color = color_gibrid2
+
+if size_gibrid1 == size_gibrid2:
+    gibrid_size = size_gibrid1
+else:
+    if size_gibrid1 == 'малый' and size_gibrid2 == 'средний':
+        gibrid_size = 'малый/средний'
+    elif size_gibrid1 == 'малый' and size_gibrid2 == 'крупный':
+        gibrid_size = 'малый/крупный'
+    elif size_gibrid1 == 'средний' and size_gibrid2 == 'малый':
+        gibrid_size = 'малый/средний'
+    elif size_gibrid1 == 'средний' and size_gibrid2 == 'крупный':
+        gibrid_size = 'средний/крупный'
+    elif size_gibrid1 == 'крупный' and size_gibrid2 == 'малый':
+        gibrid_size = 'малый/крупный'
+    elif size_gibrid1 == 'крупный' and size_gibrid2 == 'средний':
+        gibrid_size = 'средний/крупный'
+
+if growth_gibrid1 == growth_gibrid2:
+    gibrid_growth = growth_gibrid1
+else:
+    if growth_gibrid1 == 'медленный' or growth_gibrid2 == 'медленный':
+        gibrid_growth = 'медленный'
+    elif growth_gibrid1 == 'средний' or growth_gibrid2 == 'средний':
+        gibrid_growth = 'средний'
+    else:
+        gibrid_growth = 'быстрый'
+print(f'Гибрид: {gibrid_color} {gibrid_size} {gibrid_growth}')
