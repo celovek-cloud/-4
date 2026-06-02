@@ -1,12 +1,51 @@
 import random
-symbols = ['0', '1', 'л', 'м', 'ф', 'з', 'н']
-repeat_no = ['н', 'ф']
-repeat_yes = [s for s in symbols if s not in repeat_no]
-labirint_stroka = []
-labirint_stroka.extend(repeat_no)
-labirint_stroka.extend(random.choices(repeat_yes, k=23))
-random.shuffle(labirint_stroka)
-labirint_stroka = ''.join(labirint_stroka)
-print(labirint_stroka)
-labirint_matrix = [list(labirint_stroka[i*5: (i+1)*5]) for i in range(5)]
-print(*[''.join(row) for row in labirint_matrix], sep='\n')
+print('Добро пожаловать в лабиринт!')
+print('Символы в лабиринте: \n0 — проход (можно идти) \n1 — стена (нельзя пройти) \nл — ловушка (-10 HP) \nм — монета (+1 монета) \nф — выход (нужно дойти до него и не погибнуть) \nз — враг (-50 HP) \nн — начальная точка (вход)')
+symbols = ['0', '1', 'л', 'м', 'з']
+labirintik = [random.choice(symbols) for _ in range(23)]
+labirintik.append('н')
+labirintik.append('ф')
+random.shuffle(labirintik)
+str_labirintik = ''.join(labirintik)
+print('Лабиринт:')
+print(str_labirintik[0:5])
+print(str_labirintik[5:10])
+print(str_labirintik[10:15])
+print(str_labirintik[15:20])
+print(str_labirintik[20:25])
+
+index_n = str_labirintik.index('н')
+str_n = index_n // 5
+stolb_n = index_n % 5
+print(f'Вход н находится в строке {str_n}, столбце {stolb_n}')
+
+index_f = str_labirintik.index('ф')
+str_f = index_f // 5
+stolb_f = index_f % 5
+print(f'Выход ф находится в строке {str_f}, столбце {stolb_f}')
+
+rasstoyanie = abs(str_n - str_f) + abs(stolb_n - stolb_f)
+print(f'Расстояние между входом и выходом: {rasstoyanie} шагов')
+
+count_money = str_labirintik.count('м')
+print(f'Количество монет в лабиринте: 🟡x{count_money}')
+
+count_lovushki = str_labirintik.count('л')
+count_vragi = str_labirintik.count('з')
+damage = count_lovushki * 10 + count_vragi * 50
+hp_start = 100
+hp_ostatok = hp_start - damage
+if hp_ostatok < 0:
+    hp_str = '♡' * 10
+else:
+    hp_str = '♥' * (hp_ostatok // 10) + '♡' * (10 - (hp_ostatok // 10))
+print(f'Изначальное игрока {hp_start} HP')
+print(f'Остаток здоровья: {hp_str}')
+
+mega_labirint = str_labirintik.replace('0', '⬜').replace('1', '⬛').replace('л', '🔷').replace('м', '🟡').replace('ф', '🟫').replace('з', '🐷').replace('н', '⭐')
+print('0 — ⬜ (белый квадрат) \n1 — ⬛ (черный квадрат) \nл — 🔷 (синий ромб) \nм — 🟡 (желтый круг) \nф — 🟫 (коричневый квадрат) \nз — 🐷 (свинья) \nн — ⭐ (звезда)')
+print(mega_labirint[0:5])
+print(mega_labirint[5:10])
+print(mega_labirint[10:15])
+print(mega_labirint[15:20])
+print(mega_labirint[20:25])
