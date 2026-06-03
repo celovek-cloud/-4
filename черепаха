@@ -1,0 +1,181 @@
+import turtle
+
+from pygments.styles.dracula import yellow
+
+COLOR_SUN='yellow'
+WIDTH_LYCHI=6
+COUNT_LYCHI=16
+UGOL_LYCHA=22.5
+COLOR_LYCHI=('orange')
+WIDTH_CONTUR_SUN=1
+SIZE_CIRCLE=60
+COLOR_GRASS="green"
+BLADE_COUNT=10
+START_X=-400
+START_Y=-350
+BLADE_CIRCLE=70
+GRASS_FORWARD=10
+STEM_COLOR='darkgreen'
+STEM_WIDTH=4
+WIDTH_CONTUR_FLOWER = 1
+COLOR_FLOWER='pink'
+PETAL_COUNT=10
+PETAL_RADIUS=30
+CENTER_COLOR='yellow'
+CENTER_RADIUS=30
+COLOR_CLOUD="white"
+COLOR_HEART="red"
+HEART_RADIUS=-30
+TEXT_1_COLOR = "purple"
+TEXT_2_COLOR = "deeppink"
+TEXT_3_COLOR = "blue"
+TEXT_1 = 'РОДНЫЕЕЕЕЕЕ!'
+TEXT_2 = 'РЕСПЕКТ'
+TEXT_3 ='ОТ ЧИСТОГО СЕРДЦА'
+ALGIN = "center"
+FRONT_1 = "Arial", 36, "bold"
+FRONT_2 = "Arial", 20, "italic"
+FRONT_3 = "Arial", 14, "normal"
+
+# --- Настройки экрана ---
+t = turtle.Turtle()
+t.speed(0)
+t.hideturtle()
+screen = turtle.Screen()
+screen.bgcolor("lightblue")
+screen.setup(width=800, height=700)
+
+
+
+# =====================================================
+# СОЛНЫШКО
+# =====================================================
+def picture_sun(x1_sun, y1_sun, x2_sun, y2_sun):
+    t.color(COLOR_LYCHI)
+    t.width(WIDTH_LYCHI)
+    for i in range(COUNT_LYCHI):
+        t.penup()
+        t.goto(x1_sun, y1_sun)
+        t.pendown()
+        t.setheading(i * UGOL_LYCHA)
+        t.forward(90)
+    t.width(WIDTH_CONTUR_SUN)
+    t.penup()
+    t.goto(x2_sun,y2_sun)
+    t.pendown()
+    t.color(COLOR_SUN)
+    t.begin_fill()
+    t.circle(SIZE_CIRCLE)
+    t.end_fill()
+picture_sun(300, 250, 350, 190)
+
+# =====================================================
+# ТРАВА
+# =====================================================
+
+t.color(COLOR_GRASS)
+for i in range(12):
+    t.penup()
+    t.goto(START_X + i * BLADE_COUNT,START_Y)
+    t.pendown()
+    d = 1 if i % 2 == 0 else -1
+    t.setheading(75 + (i % 5) * 10)
+    t.width(3 - (i % 2))
+    n = BLADE_CIRCLE + (i % 30)
+    for j in range(int(n / 10)):
+        t.forward(GRASS_FORWARD)
+        t.left(5 * d)
+    t.width(1)
+
+# =====================================================
+# ЦВЕТОК
+# =====================================================
+
+def picture_flower(x1_flower, y1_flower, x2_flower, y2_flower):
+    t.color(STEM_COLOR)
+    t.width(STEM_WIDTH)
+    t.penup()
+    t.goto(x1_flower,y1_flower)
+    t.pendown()
+    t.setheading(90)
+    t.forward(120)
+    t.width(WIDTH_CONTUR_FLOWER)
+    t.color(COLOR_FLOWER)
+    for i in range(PETAL_COUNT):
+        t.penup()
+        t.goto(x2_flower, y2_flower)
+        t.pendown()
+        t.setheading(i * 45)
+        t.begin_fill()
+        t.circle(PETAL_RADIUS, 180)
+        t.circle(PETAL_RADIUS, 180)
+        t.end_fill()
+    t.penup()
+    t.goto(x2_flower, y2_flower)
+    t.pendown()
+    t.color(CENTER_COLOR)
+    t.begin_fill()
+    t.circle(CENTER_RADIUS)
+    t.end_fill()
+picture_flower(0, -300, 0, -180)
+
+# =====================================================
+# ПАРА 2 — ОБЛАКО
+# =====================================================
+
+t.color(COLOR_CLOUD)
+coords = [
+    (100, 280, 40),
+    (70, 290, 30),
+    (130, 290, 30),
+    (50, 270, 25),
+    (150, 270, 25),
+    (100, 260, 35)
+]
+for x, y, radius in coords:
+    t.penup()
+    t.goto(x, y-radius)
+    t.pendown()
+    t.begin_fill()
+    t.circle(radius)
+    t.end_fill()
+
+# =====================================================
+# ДЕКОР
+# =====================================================
+
+def picture_heart(x_heart, y_heart):
+    t.penup()
+    t.goto(x_heart, y_heart)
+    t.pendown()
+    t.color(COLOR_HEART)
+    t.begin_fill()
+    t.setheading(140)
+    t.forward(62)
+    t.circle(HEART_RADIUS, 200)
+    t.setheading(60)
+    t.circle(HEART_RADIUS, 200)
+    t.forward(62)
+    t.end_fill()
+picture_heart(-300, 50)
+picture_heart(300, 50)
+
+def picture_text(x1_text, y1_text, x2_text, y2_text, x3_text, y3_text):
+    t.penup()
+    t.goto(x1_text, y1_text)
+    t.pendown()
+    t.color(TEXT_1_COLOR)
+    t.write(TEXT_1, align=ALGIN, font=(FRONT_1))
+    t.penup()
+    t.goto( x2_text, y2_text)
+    t.pendown()
+    t.color(TEXT_2_COLOR)
+    t.write(TEXT_2, align=ALGIN, font=(FRONT_2))
+    t.penup()
+    t.goto(x3_text, y3_text)
+    t.pendown()
+    t.color(TEXT_3_COLOR)
+    t.write(TEXT_3, align=ALGIN, font=(FRONT_3))
+picture_text(0,15,0,15,0,10)
+
+turtle.done()
