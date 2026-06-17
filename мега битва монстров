@@ -1,0 +1,50 @@
+class Monster():
+    def __init__(self,name='Неизвестная тварь', hp=100, dmg=10):
+        self.name = name
+        self.hp = hp
+        self.dmg = dmg
+        print(f'Монстр: {self.name}')
+        print(f'HP: {self.hp}')
+        print(f'DMG: {self.dmg}')
+        print('___________________')
+
+
+m1 = input('Введите имя, здоровье и урон первого монстра: ')
+m1_name, m1_hp, m1_dmg = m1.split()
+m1_hp = int(m1_hp)
+m1_dmg = int(m1_dmg)
+m1 = Monster(m1_name, m1_hp, m1_dmg)
+
+m2 = input('Введите имя, здоровье и урон второго монстра: ')
+m2_name, m2_hp, m2_dmg = m2.split()
+m2_hp = int(m2_hp)
+m2_dmg = int(m2_dmg)
+m2 = Monster(m2_name, m2_hp, m2_dmg)
+
+while True:
+    m2.hp -= m1.dmg
+    print(f'{m1.name} наносит удар!')
+    if m2.hp<0:
+        m2.hp = 0
+    print(f' У {m2.name} осталось {m2.hp} HP')
+    if m1.hp<0:
+        m1.hp = 0
+        break
+    if m2.hp == 0:
+        break
+    m1.hp -= m2.dmg
+    print(f'{m2.name} наносит удар!')
+    if m1.hp<0:
+        m1.hp = 0
+    print(f' У {m1.name} осталось {m1.hp} HP')
+    if m1.hp == 0:
+        break
+    if m2.hp<0:
+        m2.hp = 0
+        break
+
+if m1.hp>m2.hp:
+    winner = m1.name
+elif m2.hp>m1.hp:
+    winner = m2.name
+print(f'Победил {winner}')
