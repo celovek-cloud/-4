@@ -1,0 +1,14 @@
+class DarkEtity:
+    def __init__(self, name, species, danger_level):
+        self.__name = name
+        self.__species = species
+        self.__danger_level = danger_level
+
+
+Balor = DarkEtity('Балор', 'Высший Демон', 99)
+
+extracted_name = Balor._DarkEtity__name
+extracted_species = Balor._DarkEtity__species
+extracted_danger_level = Balor._DarkEtity__danger_level
+
+print(f'Данные из Гримуара: {extracted_name}, {extracted_species}, {extracted_danger_level}')
