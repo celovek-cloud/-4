@@ -1,0 +1,224 @@
+import random
+
+class Monster:
+    def __init__(self, name, hp, dmg):
+        self.__name = name
+        self.__hp = hp
+        self.__dmg = dmg
+
+    def get_name(self):
+        return self.__name
+    
+    def get_hp(self):
+        return self.__hp
+    
+    def get_dmg(self):
+        return self.__dmg
+    
+    def set_hp(self, value):
+        if value < 0:
+            self.__hp = 0
+        else:
+            self.__hp = value
+
+    def is_alive(self):
+        return self.__hp > 0
+    
+    def show_status(self):
+        print(f'{self.__name} HP: {self.__hp}')
+
+    def take_damage(self, damage):
+        new_hp = self.get_hp() - damage
+        self.set_hp(new_hp)
+        print(f'{self.get_name()} получает {damage} урона.')
+
+    def attack_hunter(self, hunter):
+        if self.is_alive():
+            print(f'{self.get_name()} атакует!')
+            hunter.take_damage(self.__dmg)
+
+
+class Zombie(Monster):
+    def __init__(self, name):
+        super().__init__(name, hp=120, dmg=10)
+
+    def take_damage(self, damage):
+        super().take_damage(damage)
+
+
+class Vampire(Monster):
+    def __init__(self, name):
+        super().__init__(name, hp=80, dmg=15)
+
+    def take_damage(self, damage):
+        final_damage = damage - 5
+        if final_damage < 0:
+            final_damage = 0 
+        print(f'Поглощено 5 урона.')
+        super().take_damage(final_damage)
+
+
+class Ghost(Monster):
+    def __init__(self, name):
+        super().__init__(name, hp=60, dmg=20)
+
+    def take_damage(self, damage):
+        if random.random() < 0.3:
+            print(f'{self.get_name()} уклонился от удара!')
+        else:
+            super().take_damage(damage)
+
+
+class Werewolf(Monster):
+    def __init__(self, name):
+        super().__init__(name, hp=100, dmg=25)
+        self.__transformed = False 
+
+    def take_damage(self, damage):
+        super().take_damage(damage)
+        if self.get_hp() < 50 and not self.__transformed and self.is_alive():
+            self.__transformed = True
+            print(f'{self.get_name()} трансформируется!')
+
+
+class Weapon:
+    def __init__(self, name):
+        self.name = name
+
+    def use(self, monster):
+        pass
+
+
+class SilverSword(Weapon):
+    def __init__(self):
+        super().__init__('Серебряный меч')
+
+    def use(self, monster):
+        damage = 30
+        print(f'Охотник заносит {self.name} над {monster.get_name()}!')
+        monster.take_damage(damage)
+
+
+class HolyWater(Weapon):
+    def __init__(self):
+        super().__init__('Святая вода')
+
+    def use(self, monster):
+        damage = 20
+        print(f'Охотник брызгает каплями {self.name} на {monster.get_name()}!')
+        monster.take_damage(damage)
+
+
+class CrossbowBolt(Weapon):
+    def __init__(self):
+        super().__init__('Арбалетный болт')
+
+    def use(self, monster):
+        damage = 25
+        print(f'{self.name} летит прямо в {monster.get_name()}!')
+        monster.take_damage(damage)
+
+
+class Hunter:
+    def __init__(self, name):
+        self.__name = name
+        self.__hp = 100
+        self.__weapons = []
+
+    def get_name(self):
+        return self.__name
+
+    def get_hp(self):
+        return self.__hp
+
+    def set_hp(self, value):
+        if value < 0:
+            self.__hp = 0
+        else:
+            self.__hp = value
+
+    def add_weapon(self, weapon):
+        self.__weapons.append(weapon)
+        print(f'В инвентарь добавлен: {weapon.name}')
+
+    def show_inventory(self):
+        print(f'\nИнвентарь охотника {self.__name}:')
+        if not self.__weapons:
+            print('[Пусто]')
+            return
+        index = 1
+        for weapon in self.__weapons:
+            print(f"  {index}. {weapon.name}")
+            index += 1
+
+    def attack(self, weapon_index, monster):
+        if not self.is_alive():
+            print(f'Охотник {self.__name} мертв и не может атаковать!')
+            return
+        if 0 <= weapon_index < len(self.__weapons):
+            weapon = self.__weapons[weapon_index]
+            weapon.use(monster)
+        else:
+            print('Оружие под таким номером не найдено в инвентаре!')
+
+    def is_alive(self):
+        return self.__hp > 0
+    
+    def take_damage(self, damage):
+        new_hp = self.__hp - damage
+        self.set_hp(new_hp)
+        print(f'Охотник {self.__name} получает {damage} урона! (Осталось HP: {self.__hp})')
+
+    def show_status(self):
+        print(f'Статус охотника {self.__name}: {self.__hp} HP')
+
+
+def run_game():
+    hunter = Hunter('Ван Хельсинг')
+    hunter.add_weapon(SilverSword())
+    hunter.add_weapon(HolyWater())
+    hunter.add_weapon(CrossbowBolt())
+    
+    print('==========================================')
+    print(f'Охотник {hunter.get_name()} выходит на тропу войны!')
+    hunter.show_inventory()
+    print('==========================================')
+
+    monsters = [
+        Zombie('Зомби Боб'),
+        Vampire('Граф Дракула'),
+        Ghost('Каспер'),
+        Werewolf('Волк Люкан')
+    ]
+
+    for monster in monsters:
+        print(f'\nНа пути появляется новый враг: {monster.get_name()}!')
+        monster.show_status()
+        print('-' * 40)
+
+        round_num = 1
+        while monster.is_alive() and hunter.is_alive():
+            print(f'\n--- Раунд {round_num} ---')
+            
+            weapon_idx = random.randint(0, 2)
+            hunter.attack(weapon_idx, monster)
+
+            if monster.is_alive():
+                monster.attack_hunter(hunter)
+            else:
+                print(f'{monster.get_name()} повержен!')
+
+            hunter.show_status()
+            round_num += 1
+
+        if not hunter.is_alive():
+            break
+
+    print("\n==========================================")
+    if hunter.is_alive():
+        print(f'🏆 ПОБЕДА! Охотник {hunter.get_name()} очистил этот мир от нечести!')
+    else:
+        print(f'💀 ПОРАЖЕНИЕ! Охотник {hunter.get_name()} пал в бою...')
+    print('==========================================')
+
+run_game()
