@@ -214,7 +214,7 @@ def run_game():
         if not hunter.is_alive():
             break
 
-    print("\n==========================================")
+    print('\n==========================================')
     if hunter.is_alive():
         print(f'🏆 ПОБЕДА! Охотник {hunter.get_name()} очистил этот мир от нечести!')
     else:
